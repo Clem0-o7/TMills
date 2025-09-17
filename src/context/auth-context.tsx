@@ -1,40 +1,59 @@
+
 "use client";
 
-import { createContext, useContext, useState, ReactNode, useEffect, useMemo } from 'react';
-import { UserDefinition, UserRole } from '@/types';
+import { createContext, useContext, useState, ReactNode, useMemo, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import { UserDefinition } from '@/types';
 import { users as userDefinitions } from '@/lib/data';
 
 interface AuthContextType {
   user: UserDefinition | null;
   users: UserDefinition[];
-  setUser: (user: UserDefinition) => void;
-  switchUser: (userId: string) => void;
+  login: (email: string, password: string) => boolean;
+  logout: () => void;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export function AuthProvider({ children }: { children: ReactNode }) {
-  const [user, setUserState] = useState<UserDefinition | null>(null);
+  const [user, setUser] = useState<UserDefinition | null>(null);
+  const router = useRouter();
 
   useEffect(() => {
-    // Set default user on initial load
-    if (userDefinitions.length > 0) {
-      setUserState(userDefinitions[0]);
-    }
-  }, []);
-
-  const setUser = (user: UserDefinition) => {
-    setUserState(user);
-  };
-  
-  const switchUser = (userId: string) => {
-      const newUser = userDefinitions.find(u => u.id === userId);
-      if(newUser) {
-          setUserState(newUser);
+    const storedUserId = localStorage.getItem('userId');
+    if (storedUserId) {
+      const loggedInUser = userDefinitions.find(u => u.id === storedUserId);
+      if (loggedInUser) {
+        setUser(loggedInUser);
       }
-  }
+    } else {
+        router.push('/login');
+    }
+  }, [router]);
 
-  const value = useMemo(() => ({ user, users: userDefinitions, setUser, switchUser }), [user]);
+  const login = (email: string, password: string): boolean => {
+    const userToLogin = userDefinitions.find(u => u.email === email && u.password === password);
+    if (userToLogin) {
+      setUser(userToLogin);
+      localStorage.setItem('userId', userToLogin.id);
+      router.push('/dashboard');
+      return true;
+    }
+    return false;
+  };
+
+  const logout = () => {
+    setUser(null);
+    localStorage.removeItem('userId');
+    router.push('/login');
+  };
+
+  const value = useMemo(() => ({
+    user,
+    users: userDefinitions,
+    login,
+    logout,
+  }), [user]);
 
   return (
     <AuthContext.Provider value={value}>

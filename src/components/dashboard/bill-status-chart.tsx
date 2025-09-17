@@ -8,19 +8,19 @@ export default function BillStatusChart() {
   const data = bills.reduce((acc, bill) => {
     const level = bill.level;
     if (!acc[level]) {
-      acc[level] = { name: level, Coloring: 0, Washing: 0, Stitching: 0 };
+      acc[level] = { name: level, "Level 1: Coloring": 0, "Level 2: Washing": 0, "Level 3: Stitching": 0 };
     }
     acc[level][level]++;
     return acc;
-  }, {} as Record<string, {name: string, Coloring: number, Washing: number, Stitching: number}>);
+  }, {} as Record<string, {name: string, "Level 1: Coloring": number, "Level 2: Washing": number, "Level 3: Stitching": number}>);
 
   const chartData = Object.values(data);
   const totalBills = bills.length;
   
-  const processedData = ['Coloring', 'Washing', 'Stitching'].map(level => {
+  const processedData = ['Level 1: Coloring', 'Level 2: Washing', 'Level 3: Stitching'].map(level => {
       const pending = bills.filter(b => b.level === level && (b.status.startsWith('Pending') || b.status === 'Returned')).length;
       const approved = bills.filter(b => b.level === level && (b.status === 'Approved' || b.status === 'Closed')).length;
-      return { name: level, Pending: pending, Approved: approved };
+      return { name: level.split(': ')[1], Pending: pending, Approved: approved };
   });
 
   return (

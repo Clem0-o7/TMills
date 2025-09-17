@@ -1,3 +1,4 @@
+
 "use client";
 
 import * as React from "react";
@@ -75,7 +76,7 @@ export default function BillsTable() {
   const [filters, setFilters] = React.useState({ search: "", status: "all", level: "all" });
   const [sort, setSort] = React.useState<{ key: keyof Bill | 'age' | 'vendorName', direction: 'asc' | 'desc' } | null>(null);
   const [selectedRows, setSelectedRows] = React.useState<Set<string>>(new Set());
-  const { user, users } = useAuth();
+  const { user } = useAuth();
   const router = useRouter();
   const { toast } = useToast();
 
@@ -104,6 +105,9 @@ export default function BillsTable() {
         } else if (sort.key === 'vendorName') {
             valA = a.vendor.name;
             valB = b.vendor.name;
+        } else if (sort.key === 'level') {
+            valA = parseInt(a.level.split(':')[0].replace('Level ', ''), 10);
+            valB = parseInt(b.level.split(':')[0].replace('Level ', ''), 10);
         } else {
             valA = a[sort.key as keyof Bill];
             valB = b[sort.key as keyof Bill];
@@ -242,9 +246,9 @@ export default function BillsTable() {
               </SelectTrigger>
               <SelectContent>
                 <SelectItem value="all">All Levels</SelectItem>
-                <SelectItem value="Coloring">Coloring</SelectItem>
-                <SelectItem value="Washing">Washing</SelectItem>
-                <SelectItem value="Stitching">Stitching</SelectItem>
+                <SelectItem value="Level 1: Coloring">Level 1: Coloring</SelectItem>
+                <SelectItem value="Level 2: Washing">Level 2: Washing</SelectItem>
+                <SelectItem value="Level 3: Stitching">Level 3: Stitching</SelectItem>
               </SelectContent>
             </Select>
           </div>
@@ -285,7 +289,11 @@ export default function BillsTable() {
                         Vendor <ArrowUpDown className="ml-2 h-4 w-4" />
                     </Button>
                 </TableHead>
-                <TableHead>Level</TableHead>
+                <TableHead>
+                  <Button variant="ghost" onClick={() => handleSort('level')}>
+                    Level <ArrowUpDown className="ml-2 h-4 w-4" />
+                  </Button>
+                </TableHead>
                 <TableHead>Status</TableHead>
                 <TableHead>
                     <Button variant="ghost" onClick={() => handleSort('billDate')}>

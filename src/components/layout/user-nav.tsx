@@ -17,7 +17,7 @@ import { useAuth } from "@/context/auth-context";
 
 export function UserNav() {
   const userAvatar = PlaceHolderImages.find(p => p.id === 'user-avatar-1');
-  const { user } = useAuth();
+  const { user, logout } = useAuth();
 
   if (!user) {
     return null;
@@ -54,7 +54,7 @@ export function UserNav() {
           </DropdownMenuItem>
         </DropdownMenuGroup>
         <DropdownMenuSeparator />
-        <DropdownMenuItem>
+        <DropdownMenuItem onClick={logout}>
           <LogOut className="mr-2 h-4 w-4" />
           <span>Log out</span>
         </DropdownMenuItem>

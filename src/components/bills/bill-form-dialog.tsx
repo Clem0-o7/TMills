@@ -56,7 +56,7 @@ export function BillFormDialog({ onSave }: BillFormDialogProps) {
   const form = useForm<BillFormValues>({
     resolver: zodResolver(billSchema),
     defaultValues: {
-      level: "Coloring",
+      level: "Level 1: Coloring",
     },
   });
 
@@ -149,9 +149,9 @@ export function BillFormDialog({ onSave }: BillFormDialogProps) {
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
-                      <SelectItem value="Coloring">Level 1: Coloring</SelectItem>
-                      <SelectItem value="Washing">Level 2: Washing</SelectItem>
-                      <SelectItem value="Stitching">Level 3: Stitching</SelectItem>
+                      <SelectItem value="Level 1: Coloring">Level 1: Coloring</SelectItem>
+                      <SelectItem value="Level 2: Washing">Level 2: Washing</SelectItem>
+                      <SelectItem value="Level 3: Stitching">Level 3: Stitching</SelectItem>
                     </SelectContent>
                   </Select>
                   <FormMessage />

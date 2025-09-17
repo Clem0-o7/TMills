@@ -1,3 +1,4 @@
+
 export type Vendor = {
   id: string;
   name: string;
@@ -10,6 +11,7 @@ export type UserDefinition = {
   name: string;
   role: UserRole;
   email: string;
+  password?: string;
 };
 
 export type BillHistory = {
@@ -20,7 +22,7 @@ export type BillHistory = {
   reductionAmount?: number;
 };
 
-export type BillProcessingLevel = 'Coloring' | 'Washing' | 'Stitching';
+export type BillProcessingLevel = 'Level 1: Coloring' | 'Level 2: Washing' | 'Level 3: Stitching';
 
 export type BillStatus = 'Draft' | 'Pending Alampatti' | 'Pending Kappalur' | 'Pending Chairman' | 'Approved' | 'Returned' | 'Closed';
 

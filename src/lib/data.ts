@@ -1,3 +1,4 @@
+
 import type { Vendor, Bill, UserDefinition } from '@/types';
 import { subDays } from 'date-fns';
 
@@ -10,9 +11,9 @@ export const vendors: Vendor[] = [
 ];
 
 export const users: UserDefinition[] = [
-    { id: 'user-1', name: 'Alampatti AM', role: 'Accounts Manager (Alampatti)', email: 'alampatti@tmills.com' },
-    { id: 'user-2', name: 'Kappalur AM', role: 'Accounts Manager (Kappalur)', email: 'kappalur@tmills.com' },
-    { id: 'user-3', name: 'Mr. Chairman', role: 'Chairman', email: 'chairman@tmills.com' },
+    { id: 'user-1', name: 'Alampatti AM', role: 'Accounts Manager (Alampatti)', email: 'alampatti@tmills.com', password: 'password123' },
+    { id: 'user-2', name: 'Kappalur AM', role: 'Accounts Manager (Kappalur)', email: 'kappalur@tmills.com', password: 'password123' },
+    { id: 'user-3', name: 'Mr. Chairman', role: 'Chairman', email: 'chairman@tmills.com', password: 'password123' },
 ];
 
 export const bills: Bill[] = [
@@ -22,7 +23,7 @@ export const bills: Bill[] = [
     vendor: vendors[0],
     billDate: subDays(new Date(), 5),
     amount: 75000,
-    level: 'Coloring',
+    level: 'Level 1: Coloring',
     status: 'Pending Kappalur',
     history: [
       { action: 'Created', actor: 'Accounts Manager (Alampatti)', timestamp: subDays(new Date(), 5) },
@@ -35,7 +36,7 @@ export const bills: Bill[] = [
     vendor: vendors[1],
     billDate: subDays(new Date(), 12),
     amount: 120000,
-    level: 'Washing',
+    level: 'Level 2: Washing',
     status: 'Pending Chairman',
     history: [
       { action: 'Created', actor: 'Accounts Manager (Alampatti)', timestamp: subDays(new Date(), 12) },
@@ -49,7 +50,7 @@ export const bills: Bill[] = [
     vendor: vendors[2],
     billDate: subDays(new Date(), 25),
     amount: 45000,
-    level: 'Stitching',
+    level: 'Level 3: Stitching',
     status: 'Returned',
     history: [
       { action: 'Created', actor: 'Accounts Manager (Alampatti)', timestamp: subDays(new Date(), 25) },
@@ -62,7 +63,7 @@ export const bills: Bill[] = [
     vendor: vendors[3],
     billDate: subDays(new Date(), 2),
     amount: 95000,
-    level: 'Coloring',
+    level: 'Level 1: Coloring',
     status: 'Pending Alampatti',
     history: [{ action: 'Created', actor: 'Accounts Manager (Alampatti)', timestamp: subDays(new Date(), 2) }],
   },
@@ -72,7 +73,7 @@ export const bills: Bill[] = [
     vendor: vendors[4],
     billDate: subDays(new Date(), 35),
     amount: 210000,
-    level: 'Washing',
+    level: 'Level 2: Washing',
     status: 'Closed',
     history: [
       { action: 'Created', actor: 'Accounts Manager (Alampatti)', timestamp: subDays(new Date(), 35) },
@@ -88,7 +89,7 @@ export const bills: Bill[] = [
     vendor: vendors[0],
     billDate: subDays(new Date(), 8),
     amount: 62000,
-    level: 'Coloring',
+    level: 'Level 1: Coloring',
     status: 'Pending Kappalur',
     history: [
       { action: 'Created', actor: 'Accounts Manager (Alampatti)', timestamp: subDays(new Date(), 8) },
@@ -101,7 +102,7 @@ export const bills: Bill[] = [
     vendor: vendors[2],
     billDate: subDays(new Date(), 18),
     amount: 88000,
-    level: 'Stitching',
+    level: 'Level 3: Stitching',
     status: 'Approved',
     history: [
       { action: 'Created', actor: 'Accounts Manager (Alampatti)', timestamp: subDays(new Date(), 18) },
@@ -116,7 +117,7 @@ export const bills: Bill[] = [
     vendor: vendors[1],
     billDate: subDays(new Date(), 40),
     amount: 150000,
-    level: 'Washing',
+    level: 'Level 2: Washing',
     status: 'Closed',
     history: [
         { action: 'Created', actor: 'Accounts Manager (Alampatti)', timestamp: subDays(new Date(), 40) },

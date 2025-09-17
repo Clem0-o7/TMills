@@ -1,7 +1,12 @@
+
+"use client";
+
 import Header from '@/components/layout/header';
 import MainNav from '@/components/layout/main-nav';
 import { Sidebar, SidebarContent, SidebarHeader, SidebarInset, SidebarProvider } from '@/components/ui/sidebar';
-import { AuthProvider } from '@/context/auth-context';
+import { useAuth } from '@/context/auth-context';
+import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
 
 const AppLogo = () => (
   <svg
@@ -18,10 +23,25 @@ const AppLogo = () => (
   </svg>
 );
 
+function AuthenticatedLayout({ children }: { children: React.ReactNode }) {
+  const { user } = useAuth();
+  const router = useRouter();
 
-export default function AppLayout({ children }: { children: React.ReactNode }) {
+  useEffect(() => {
+    if (!user) {
+      router.push('/login');
+    }
+  }, [user, router]);
+
+  if (!user) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <p>Loading...</p>
+      </div>
+    );
+  }
+  
   return (
-    <AuthProvider>
       <SidebarProvider>
         <div className="flex min-h-screen">
           <Sidebar>
@@ -45,6 +65,14 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
           </SidebarInset>
         </div>
       </SidebarProvider>
-    </AuthProvider>
+  )
+}
+
+
+export default function AppLayout({ children }: { children: React.ReactNode }) {
+  return (
+      <AuthenticatedLayout>
+        {children}
+      </AuthenticatedLayout>
   );
 }

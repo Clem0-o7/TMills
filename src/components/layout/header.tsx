@@ -2,7 +2,6 @@ import { SidebarTrigger } from "@/components/ui/sidebar";
 import { UserNav } from "./user-nav";
 import { Bell } from "lucide-react";
 import { Button } from "../ui/button";
-import { UserSwitcher } from "./user-switcher";
 
 export default function Header() {
   return (
@@ -10,9 +9,7 @@ export default function Header() {
       <div className="md:hidden">
         <SidebarTrigger />
       </div>
-      <div className="flex-1">
-        <UserSwitcher />
-      </div>
+      <div className="flex-1" />
       <div className="flex items-center gap-2">
         <Button variant="ghost" size="icon">
           <Bell className="h-5 w-5" />
