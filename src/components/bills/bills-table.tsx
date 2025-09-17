@@ -353,7 +353,6 @@ export default function BillsTable() {
                             </DropdownMenuItem>
                           )}
                           {userCanApprove && <DropdownMenuItem onClick={() => handleAction(bill.id, 'approve')}>Approve</DropdownMenuItem>}
-                          <DropdownMenuItem>Suggest Modification</DropdownMenuItem>
                           {userCanReturn && <DropdownMenuItem onClick={() => handleAction(bill.id, 'return')}>Return</DropdownMenuItem>}
                         </DropdownMenuContent>
                       </DropdownMenu>
