@@ -3,13 +3,26 @@ export type Vendor = {
   name: string;
 };
 
+export type UserRole = 'Accounts Manager (Alampatti)' | 'Accounts Manager (Kappalur)' | 'Chairman';
+
+export type UserDefinition = {
+  id: string;
+  name: string;
+  role: UserRole;
+  email: string;
+};
+
 export type BillHistory = {
   timestamp: Date;
   action: string;
-  actor: string;
+  actor: UserRole | 'System';
   notes?: string;
   reductionAmount?: number;
 };
+
+export type BillProcessingLevel = 'Coloring' | 'Washing' | 'Stitching';
+
+export type BillStatus = 'Draft' | 'Pending Alampatti' | 'Pending Kappalur' | 'Pending Chairman' | 'Approved' | 'Returned' | 'Closed';
 
 export type Bill = {
   id: string;
@@ -17,7 +30,7 @@ export type Bill = {
   vendor: Vendor;
   billDate: Date;
   amount: number;
-  level: 'Coloring' | 'Washing' | 'Stitching';
-  status: 'Draft' | 'Pending Alampatti' | 'Pending Kappalur' | 'Pending Chairman' | 'Approved' | 'Returned' | 'Closed';
+  level: BillProcessingLevel;
+  status: BillStatus;
   history: BillHistory[];
 };

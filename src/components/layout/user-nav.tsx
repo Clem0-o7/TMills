@@ -13,9 +13,15 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { PlaceHolderImages } from "@/lib/placeholder-images";
 import { User, Settings, LogOut } from "lucide-react";
+import { useAuth } from "@/context/auth-context";
 
 export function UserNav() {
   const userAvatar = PlaceHolderImages.find(p => p.id === 'user-avatar-1');
+  const { user } = useAuth();
+
+  if (!user) {
+    return null;
+  }
 
   return (
     <DropdownMenu>
@@ -23,16 +29,16 @@ export function UserNav() {
         <Button variant="ghost" className="relative h-9 w-9 rounded-full">
           <Avatar className="h-9 w-9">
             {userAvatar && <AvatarImage src={userAvatar.imageUrl} alt="User Avatar" data-ai-hint={userAvatar.imageHint} />}
-            <AvatarFallback>AM</AvatarFallback>
+            <AvatarFallback>{user.name.split(' ').map(n => n[0]).join('')}</AvatarFallback>
           </Avatar>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56" align="end" forceMount>
         <DropdownMenuLabel className="font-normal">
           <div className="flex flex-col space-y-1">
-            <p className="text-sm font-medium leading-none">Accounts Manager</p>
+            <p className="text-sm font-medium leading-none">{user.name}</p>
             <p className="text-xs leading-none text-muted-foreground">
-              alampatti@tmills.com
+              {user.email}
             </p>
           </div>
         </DropdownMenuLabel>

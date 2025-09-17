@@ -1,4 +1,4 @@
-import type { Vendor, Bill } from '@/types';
+import type { Vendor, Bill, UserDefinition } from '@/types';
 import { subDays } from 'date-fns';
 
 export const vendors: Vendor[] = [
@@ -7,6 +7,12 @@ export const vendors: Vendor[] = [
   { id: 'vendor-3', name: 'Perfect Stitches Co.' },
   { id: 'vendor-4', name: 'Rainbow Colors' },
   { id: 'vendor-5', name: 'Fabric Finishers' },
+];
+
+export const users: UserDefinition[] = [
+    { id: 'user-1', name: 'Alampatti AM', role: 'Accounts Manager (Alampatti)', email: 'alampatti@tmills.com' },
+    { id: 'user-2', name: 'Kappalur AM', role: 'Accounts Manager (Kappalur)', email: 'kappalur@tmills.com' },
+    { id: 'user-3', name: 'Mr. Chairman', role: 'Chairman', email: 'chairman@tmills.com' },
 ];
 
 export const bills: Bill[] = [
@@ -19,8 +25,8 @@ export const bills: Bill[] = [
     level: 'Coloring',
     status: 'Pending Kappalur',
     history: [
-      { action: 'Created', actor: 'Alampatti AM', timestamp: subDays(new Date(), 5) },
-      { action: 'Approved', actor: 'Alampatti AM', timestamp: subDays(new Date(), 4) },
+      { action: 'Created', actor: 'Accounts Manager (Alampatti)', timestamp: subDays(new Date(), 5) },
+      { action: 'Approved', actor: 'Accounts Manager (Alampatti)', timestamp: subDays(new Date(), 4) },
     ],
   },
   {
@@ -32,9 +38,9 @@ export const bills: Bill[] = [
     level: 'Washing',
     status: 'Pending Chairman',
     history: [
-      { action: 'Created', actor: 'Alampatti AM', timestamp: subDays(new Date(), 12) },
-      { action: 'Approved', actor: 'Alampatti AM', timestamp: subDays(new Date(), 11) },
-      { action: 'Approved', actor: 'Kappalur AM', timestamp: subDays(new Date(), 10) },
+      { action: 'Created', actor: 'Accounts Manager (Alampatti)', timestamp: subDays(new Date(), 12) },
+      { action: 'Approved', actor: 'Accounts Manager (Alampatti)', timestamp: subDays(new Date(), 11) },
+      { action: 'Approved', actor: 'Accounts Manager (Kappalur)', timestamp: subDays(new Date(), 10) },
     ],
   },
   {
@@ -46,8 +52,8 @@ export const bills: Bill[] = [
     level: 'Stitching',
     status: 'Returned',
     history: [
-      { action: 'Created', actor: 'Alampatti AM', timestamp: subDays(new Date(), 25) },
-      { action: 'Returned', actor: 'Kappalur AM', notes: 'Incorrect quantity listed', timestamp: subDays(new Date(), 22) },
+      { action: 'Created', actor: 'Accounts Manager (Alampatti)', timestamp: subDays(new Date(), 25) },
+      { action: 'Returned', actor: 'Accounts Manager (Kappalur)', notes: 'Incorrect quantity listed', timestamp: subDays(new Date(), 22) },
     ],
   },
   {
@@ -58,7 +64,7 @@ export const bills: Bill[] = [
     amount: 95000,
     level: 'Coloring',
     status: 'Pending Alampatti',
-    history: [{ action: 'Created', actor: 'Alampatti AM', timestamp: subDays(new Date(), 2) }],
+    history: [{ action: 'Created', actor: 'Accounts Manager (Alampatti)', timestamp: subDays(new Date(), 2) }],
   },
   {
     id: 'BILL-005',
@@ -69,9 +75,9 @@ export const bills: Bill[] = [
     level: 'Washing',
     status: 'Closed',
     history: [
-      { action: 'Created', actor: 'Alampatti AM', timestamp: subDays(new Date(), 35) },
-      { action: 'Approved', actor: 'Alampatti AM', timestamp: subDays(new Date(), 34) },
-      { action: 'Approved', actor: 'Kappalur AM', timestamp: subDays(new Date(), 33) },
+      { action: 'Created', actor: 'Accounts Manager (Alampatti)', timestamp: subDays(new Date(), 35) },
+      { action: 'Approved', actor: 'Accounts Manager (Alampatti)', timestamp: subDays(new Date(), 34) },
+      { action: 'Approved', actor: 'Accounts Manager (Kappalur)', timestamp: subDays(new Date(), 33) },
       { action: 'Approved', actor: 'Chairman', timestamp: subDays(new Date(), 30) },
       { action: 'Closed', actor: 'System', timestamp: subDays(new Date(), 28) },
     ],
@@ -85,8 +91,8 @@ export const bills: Bill[] = [
     level: 'Coloring',
     status: 'Pending Kappalur',
     history: [
-      { action: 'Created', actor: 'Alampatti AM', timestamp: subDays(new Date(), 8) },
-      { action: 'Approved', actor: 'Alampatti AM', timestamp: subDays(new Date(), 7) },
+      { action: 'Created', actor: 'Accounts Manager (Alampatti)', timestamp: subDays(new Date(), 8) },
+      { action: 'Approved', actor: 'Accounts Manager (Alampatti)', timestamp: subDays(new Date(), 7) },
     ],
   },
    {
@@ -98,9 +104,9 @@ export const bills: Bill[] = [
     level: 'Stitching',
     status: 'Approved',
     history: [
-      { action: 'Created', actor: 'Alampatti AM', timestamp: subDays(new Date(), 18) },
-      { action: 'Approved', actor: 'Alampatti AM', timestamp: subDays(new Date(), 17) },
-      { action: 'Approved', actor: 'Kappalur AM', timestamp: subDays(new Date(), 15) },
+      { action: 'Created', actor: 'Accounts Manager (Alampatti)', timestamp: subDays(new Date(), 18) },
+      { action: 'Approved', actor: 'Accounts Manager (Alampatti)', timestamp: subDays(new Date(), 17) },
+      { action: 'Approved', actor: 'Accounts Manager (Kappalur)', timestamp: subDays(new Date(), 15) },
       { action: 'Approved', actor: 'Chairman', timestamp: subDays(new Date(), 14) },
     ],
   },
@@ -113,9 +119,9 @@ export const bills: Bill[] = [
     level: 'Washing',
     status: 'Closed',
     history: [
-        { action: 'Created', actor: 'Alampatti AM', timestamp: subDays(new Date(), 40) },
-        { action: 'Approved', actor: 'Alampatti AM', timestamp: subDays(new Date(), 39) },
-        { action: 'Approved', actor: 'Kappalur AM', timestamp: subDays(new Date(), 38) },
+        { action: 'Created', actor: 'Accounts Manager (Alampatti)', timestamp: subDays(new Date(), 40) },
+        { action: 'Approved', actor: 'Accounts Manager (Alampatti)', timestamp: subDays(new Date(), 39) },
+        { action: 'Approved', actor: 'Accounts Manager (Kappalur)', timestamp: subDays(new Date(), 38) },
         { action: 'Approved', actor: 'Chairman', timestamp: subDays(new Date(), 35) },
         { action: 'Closed', actor: 'System', timestamp: subDays(new Date(), 32) },
     ],
