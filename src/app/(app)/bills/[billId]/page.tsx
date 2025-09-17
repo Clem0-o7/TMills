@@ -6,7 +6,7 @@ import { bills as initialBills } from '@/lib/data';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
-import { ArrowLeft, Check, Edit, FileText, IndianRupee, MessageSquare, Package, Tag, User, X } from 'lucide-react';
+import { ArrowLeft, Check, Edit, FileText, IndianRupee, MessageSquare, Package, Tag, User, X, ExternalLink } from 'lucide-react';
 import { format, formatDistanceToNow } from 'date-fns';
 import { Separator } from '@/components/ui/separator';
 import { Timeline, TimelineItem, TimelineConnector, TimelineHeader, TimelineIcon, TimelineTitle, TimelineBody } from '@/components/ui/timeline';
@@ -67,9 +67,17 @@ export default function BillDetailsPage() {
                                 <CardTitle>Invoice {bill.invoiceNumber}</CardTitle>
                                 <CardDescription>From {bill.vendor.name}</CardDescription>
                             </div>
-                            <Badge variant={statusColors[bill.status]} className="text-base">
-                                {bill.status}
-                            </Badge>
+                             <div className="flex items-center gap-2">
+                                {bill.invoiceUrl && (
+                                <Button variant="outline" size="sm" onClick={() => window.open(bill.invoiceUrl, '_blank')}>
+                                    <ExternalLink className="mr-2 h-4 w-4" />
+                                    View Invoice
+                                </Button>
+                                )}
+                                <Badge variant={statusColors[bill.status]} className="text-base">
+                                    {bill.status}
+                                </Badge>
+                            </div>
                         </div>
                     </CardHeader>
                     <CardContent>

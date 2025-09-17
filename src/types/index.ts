@@ -35,4 +35,5 @@ export type Bill = {
   level: BillProcessingLevel;
   status: BillStatus;
   history: BillHistory[];
+  invoiceUrl?: string;
 };

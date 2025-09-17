@@ -25,6 +25,7 @@ export const bills: Bill[] = [
     amount: 75000,
     level: 'Level 1: Coloring',
     status: 'Pending Kappalur',
+    invoiceUrl: 'https://placehold.co/600x800.pdf',
     history: [
       { action: 'Created', actor: 'Accounts Manager (Alampatti)', timestamp: subDays(new Date(), 5) },
       { action: 'Approved', actor: 'Accounts Manager (Alampatti)', timestamp: subDays(new Date(), 4) },
@@ -38,6 +39,7 @@ export const bills: Bill[] = [
     amount: 120000,
     level: 'Level 2: Washing',
     status: 'Pending Chairman',
+    invoiceUrl: 'https://placehold.co/600x800.png',
     history: [
       { action: 'Created', actor: 'Accounts Manager (Alampatti)', timestamp: subDays(new Date(), 12) },
       { action: 'Approved', actor: 'Accounts Manager (Alampatti)', timestamp: subDays(new Date(), 11) },
@@ -52,6 +54,7 @@ export const bills: Bill[] = [
     amount: 45000,
     level: 'Level 3: Stitching',
     status: 'Returned',
+    invoiceUrl: 'https://placehold.co/600x800.pdf',
     history: [
       { action: 'Created', actor: 'Accounts Manager (Alampatti)', timestamp: subDays(new Date(), 25) },
       { action: 'Returned', actor: 'Accounts Manager (Kappalur)', notes: 'Incorrect quantity listed', timestamp: subDays(new Date(), 22) },
@@ -65,6 +68,7 @@ export const bills: Bill[] = [
     amount: 95000,
     level: 'Level 1: Coloring',
     status: 'Pending Alampatti',
+    invoiceUrl: 'https://placehold.co/600x800.png',
     history: [{ action: 'Created', actor: 'Accounts Manager (Alampatti)', timestamp: subDays(new Date(), 2) }],
   },
   {
@@ -75,6 +79,7 @@ export const bills: Bill[] = [
     amount: 210000,
     level: 'Level 2: Washing',
     status: 'Closed',
+    invoiceUrl: 'https://placehold.co/600x800.pdf',
     history: [
       { action: 'Created', actor: 'Accounts Manager (Alampatti)', timestamp: subDays(new Date(), 35) },
       { action: 'Approved', actor: 'Accounts Manager (Alampatti)', timestamp: subDays(new Date(), 34) },
@@ -91,6 +96,7 @@ export const bills: Bill[] = [
     amount: 62000,
     level: 'Level 1: Coloring',
     status: 'Pending Kappalur',
+    invoiceUrl: 'https://placehold.co/600x800.png',
     history: [
       { action: 'Created', actor: 'Accounts Manager (Alampatti)', timestamp: subDays(new Date(), 8) },
       { action: 'Approved', actor: 'Accounts Manager (Alampatti)', timestamp: subDays(new Date(), 7) },
@@ -104,6 +110,7 @@ export const bills: Bill[] = [
     amount: 88000,
     level: 'Level 3: Stitching',
     status: 'Approved',
+    invoiceUrl: 'https://placehold.co/600x800.pdf',
     history: [
       { action: 'Created', actor: 'Accounts Manager (Alampatti)', timestamp: subDays(new Date(), 18) },
       { action: 'Approved', actor: 'Accounts Manager (Alampatti)', timestamp: subDays(new Date(), 17) },
@@ -119,6 +126,7 @@ export const bills: Bill[] = [
     amount: 150000,
     level: 'Level 2: Washing',
     status: 'Closed',
+    invoiceUrl: 'https://placehold.co/600x800.png',
     history: [
         { action: 'Created', actor: 'Accounts Manager (Alampatti)', timestamp: subDays(new Date(), 40) },
         { action: 'Approved', actor: 'Accounts Manager (Alampatti)', timestamp: subDays(new Date(), 39) },

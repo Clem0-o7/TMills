@@ -27,7 +27,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { bills as initialBills } from "@/lib/data";
 import type { Bill, BillStatus, UserRole } from "@/types";
 import { format, differenceInDays } from "date-fns";
-import { MoreHorizontal, ArrowUpDown, ChevronsUpDown, Trash2, CheckCircle, RotateCcw } from "lucide-react";
+import { MoreHorizontal, ArrowUpDown, ChevronsUpDown, Trash2, CheckCircle, RotateCcw, FileText } from "lucide-react";
 import { BillFormDialog } from "./bill-form-dialog";
 import { useAuth } from "@/context/auth-context";
 import { useRouter } from "next/navigation";
@@ -149,7 +149,8 @@ export default function BillsTable() {
             action: 'Created',
             actor: user!.role,
             timestamp: new Date()
-        }]
+        }],
+        invoiceUrl: 'https://placehold.co/600x800.pdf',
       };
       setBills(prev => [newBill, ...prev]);
   };
@@ -345,6 +346,12 @@ export default function BillsTable() {
                         <DropdownMenuContent align="end">
                           <DropdownMenuLabel>Actions</DropdownMenuLabel>
                           <DropdownMenuItem onClick={() => router.push(`/bills/${bill.id}`)}>View Details</DropdownMenuItem>
+                          {bill.invoiceUrl && (
+                            <DropdownMenuItem onClick={() => window.open(bill.invoiceUrl, '_blank')}>
+                                <FileText className="mr-2 h-4 w-4" />
+                                View Invoice
+                            </DropdownMenuItem>
+                          )}
                           {userCanApprove && <DropdownMenuItem onClick={() => handleAction(bill.id, 'approve')}>Approve</DropdownMenuItem>}
                           <DropdownMenuItem>Suggest Modification</DropdownMenuItem>
                           {userCanReturn && <DropdownMenuItem onClick={() => handleAction(bill.id, 'return')}>Return</DropdownMenuItem>}
